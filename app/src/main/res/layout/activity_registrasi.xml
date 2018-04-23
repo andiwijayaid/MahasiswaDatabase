@@ -51,7 +51,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:theme="@style/AppTheme.Form"
-            android:id="@+id/NIM_textInputLayout">
+            android:id="@+id/NIM_textInputLayout"
+            app:errorTextAppearance="@style/error_appearance">
 
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
@@ -68,7 +69,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:theme="@style/AppTheme.Form"
-            android:id="@+id/prodi_textInputLayout">
+            android:id="@+id/prodi_textInputLayout"
+            app:errorTextAppearance="@style/error_appearance">
 
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
@@ -85,7 +87,8 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:theme="@style/AppTheme.Form"
-            android:id="@+id/email_textInputLayout">
+            android:id="@+id/email_textInputLayout"
+            app:errorTextAppearance="@style/error_appearance">
 
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"

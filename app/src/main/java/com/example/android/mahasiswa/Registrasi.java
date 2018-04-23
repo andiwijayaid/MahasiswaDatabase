@@ -61,7 +61,7 @@ public class Registrasi extends AppCompatActivity {
                 if (namaEditText.getText().toString().isEmpty()){
 
                     namaLayout.setErrorEnabled(true);
-                    namaLayout.setError("Tolong isi nama");
+                    namaLayout.setError("Nama perlu diisi");
                 }else {
                     namaLayout.setErrorEnabled(false);
                 }
@@ -79,7 +79,7 @@ public class Registrasi extends AppCompatActivity {
                 if (namaEditText.getText().toString().isEmpty()){
 
                     namaLayout.setErrorEnabled(true);
-                    namaLayout.setError("Tolong isi nama");
+                    namaLayout.setError("Nama perlu diisi");
 
                 }else {
                     namaLayout.setErrorEnabled(false);
@@ -91,6 +91,122 @@ public class Registrasi extends AppCompatActivity {
 
             }
         });
-    }
 
+
+        // Required NIM
+        nimEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (nimEditText.getText().toString().isEmpty()){
+
+                    nimLayout.setErrorEnabled(true);
+                    nimLayout.setError("NIM perlu diisi");
+                }else {
+                    nimLayout.setErrorEnabled(false);
+                }
+            }
+        });
+
+        nimEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (namaEditText.getText().toString().isEmpty()){
+
+                    nimLayout.setErrorEnabled(true);
+                    nimLayout.setError("NIM perlu diisi");
+
+                }else {
+                    nimLayout.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        // Required Prodi
+        prodiEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (prodiEditText.getText().toString().isEmpty()){
+
+                    prodiLayout.setErrorEnabled(true);
+                    prodiLayout.setError("NIM perlu diisi");
+                }else {
+                    prodiLayout.setErrorEnabled(false);
+                }
+            }
+        });
+
+        prodiEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (prodiEditText.getText().toString().isEmpty()){
+
+                    prodiLayout.setErrorEnabled(true);
+                    prodiLayout.setError("NIM perlu diisi");
+
+                }else {
+                    prodiLayout.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+
+        // Required E-mail
+        emailEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (emailEditText.getText().toString().isEmpty()){
+
+                    emailLayout.setErrorEnabled(true);
+                    emailLayout.setError("NIM perlu diisi");
+                }else {
+                    emailLayout.setErrorEnabled(false);
+                }
+            }
+        });
+
+        emailEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (emailEditText.getText().toString().isEmpty()){
+
+                    emailLayout.setErrorEnabled(true);
+                    emailLayout.setError("NIM perlu diisi");
+
+                }else {
+                    emailLayout.setErrorEnabled(false);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+    }
 }
