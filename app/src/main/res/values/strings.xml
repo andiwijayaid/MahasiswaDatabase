@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Mahasiswa</string>
+    <string name="registrasi">Registrasi</string>
+    <string name="lihat">Lihat</string>
+    <string name="nama">Nama</string>
+    <string name="nim">NIM</string>
+    <string name="email">E-mail</string>
+    <string name="program_studi">Program Studi</string>
+    <string name="kosongkan">Kosongkan</string>
+    <string name="simpan">Simpan</string>
+</resources>
