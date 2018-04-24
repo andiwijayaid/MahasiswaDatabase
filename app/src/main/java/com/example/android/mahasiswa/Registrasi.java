@@ -139,7 +139,7 @@ public class Registrasi extends AppCompatActivity {
                 if (prodiEditText.getText().toString().isEmpty()){
 
                     prodiLayout.setErrorEnabled(true);
-                    prodiLayout.setError("NIM perlu diisi");
+                    prodiLayout.setError("Program studi perlu diisi");
                 }else {
                     prodiLayout.setErrorEnabled(false);
                 }
@@ -157,7 +157,7 @@ public class Registrasi extends AppCompatActivity {
                 if (prodiEditText.getText().toString().isEmpty()){
 
                     prodiLayout.setErrorEnabled(true);
-                    prodiLayout.setError("NIM perlu diisi");
+                    prodiLayout.setError("Program studi perlu diisi");
 
                 }else {
                     prodiLayout.setErrorEnabled(false);
@@ -178,7 +178,7 @@ public class Registrasi extends AppCompatActivity {
                 if (emailEditText.getText().toString().isEmpty()){
 
                     emailLayout.setErrorEnabled(true);
-                    emailLayout.setError("NIM perlu diisi");
+                    emailLayout.setError("E-mail perlu diisi");
                 }else {
                     emailLayout.setErrorEnabled(false);
                 }
@@ -196,7 +196,7 @@ public class Registrasi extends AppCompatActivity {
                 if (emailEditText.getText().toString().isEmpty()){
 
                     emailLayout.setErrorEnabled(true);
-                    emailLayout.setError("NIM perlu diisi");
+                    emailLayout.setError("E-mail perlu diisi");
 
                 }else {
                     emailLayout.setErrorEnabled(false);

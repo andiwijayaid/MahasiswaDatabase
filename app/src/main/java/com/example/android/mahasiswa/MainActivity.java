@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DBManager dbManager = new DBManager(this);
     }
 
     // Membuat intent untuk Registrasi Activity
