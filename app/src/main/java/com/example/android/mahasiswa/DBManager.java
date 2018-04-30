@@ -1,5 +1,6 @@
 package com.example.android.mahasiswa;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -12,8 +13,8 @@ import android.widget.Toast;
 public class DBManager {
 
     private SQLiteDatabase sqlDB;
-    static final String dbName = "Mahasiswa";
-    static final String tableName = "Mahasiswa";
+    static final String dbName = "MahasiswaDB";
+    static final String tableName = "mahasiswa";
     static final String colNama = "nama";
     static final String colProdi = "prodi";
     static final String colNIM = "nim";
@@ -21,7 +22,7 @@ public class DBManager {
     static final int dbVersion = 1;
 
     static final String createTable = "CREATE TABLE IF NOT EXISTS " + tableName +
-            " (" + colNIM + "TEXT PRIMARY KEY, " +
+            " (" + colNIM + " TEXT PRIMARY KEY, " +
             colNama + " TEXT, " +
             colProdi + " TEXT, " +
             colEmail + " TEXT)";
@@ -51,6 +52,10 @@ public class DBManager {
             sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + tableName);
             onCreate(sqLiteDatabase);
         }
+    }
+
+    public void Insert (ContentValues values) {
+        sqlDB.insert(tableName, "", values);
     }
 
 }

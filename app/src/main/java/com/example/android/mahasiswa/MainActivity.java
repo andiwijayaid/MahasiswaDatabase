@@ -7,12 +7,14 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+    DBManager dbManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DBManager dbManager = new DBManager(this);
+        dbManager = new DBManager(this);
     }
 
     // Membuat intent untuk Registrasi Activity
@@ -20,4 +22,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Registrasi.class);
         startActivity(intent);
     }
+
+    // Membuat intent untuk Lihat Activity
+    public void lihat(View view) {
+        Intent intent = new Intent(this, Lihat.class);
+        startActivity(intent);
+    }
+
+
 }

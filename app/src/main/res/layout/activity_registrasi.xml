@@ -109,6 +109,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/kosong_button"
                 android:background="@drawable/lihat_button_bg"
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="8dp"
@@ -120,12 +121,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/simpan_button"
+                android:onClick="buSave"
                 android:background="@drawable/registrasi_button_bg"
                 android:layout_marginTop="24dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:text="@string/simpan"
-                android:textColor="@color/colorPrimary"/>
+                android:textColor="@color/colorPrimary"
+                tools:ignore="OnClick" />
 
         </LinearLayout>
 

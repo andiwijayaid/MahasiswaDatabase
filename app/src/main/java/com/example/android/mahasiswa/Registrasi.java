@@ -1,5 +1,6 @@
 package com.example.android.mahasiswa;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
@@ -8,6 +9,7 @@ import android.support.v7.widget.AppCompatEditText;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 public class Registrasi extends AppCompatActivity {
@@ -24,12 +26,21 @@ public class Registrasi extends AppCompatActivity {
     TextInputLayout emailLayout;
     AppCompatEditText emailEditText;
 
+    Button simpanButton, kosongkanButton;
+
+    DBManager dbManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrasi);
+
+        dbManager = new DBManager(this);
         registrasiLayout = findViewById(R.id.registrasi_layout);
+
         backButton       = findViewById(R.id.back_button);
+        simpanButton     = findViewById(R.id.simpan_button);
+        kosongkanButton  = findViewById(R.id.kosong_button);
 
         namaLayout   = findViewById(R.id.nama_textInputLayout);
         namaEditText = findViewById(R.id.nama_editText);
@@ -208,5 +219,16 @@ public class Registrasi extends AppCompatActivity {
 
             }
         });
+    }
+
+    // Simpan ke database
+    public void buSave(View view) {
+        ContentValues values = new ContentValues();
+        values.put(DBManager.colNIM, nimEditText.getText().toString());
+        values.put(DBManager.colNama, namaEditText.getText().toString());
+        values.put(DBManager.colProdi, prodiEditText.getText().toString());
+        values.put(DBManager.colEmail, emailEditText.getText().toString());
+
+        dbManager.Insert(values);
     }
 }
