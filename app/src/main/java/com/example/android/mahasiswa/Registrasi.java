@@ -1,22 +1,19 @@
 package com.example.android.mahasiswa;
 
-import android.content.ContentValues;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatEditText;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.Toast;
+
+import java.util.List;
 
 public class Registrasi extends AppCompatActivity {
 
-    LinearLayout registrasiLayout;
     FloatingActionButton backButton;
-
     TextInputLayout namaLayout;
     AppCompatEditText namaEditText;
     TextInputLayout nimLayout;
@@ -25,38 +22,37 @@ public class Registrasi extends AppCompatActivity {
     AppCompatEditText prodiEditText;
     TextInputLayout emailLayout;
     AppCompatEditText emailEditText;
-
     Button simpanButton, kosongkanButton;
 
-    DBManager dbManager;
+    private DBHandler dbHandler;
+    private RecyclerAdapter recyclerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrasi);
 
-        dbManager = new DBManager(this);
-        registrasiLayout = findViewById(R.id.registrasi_layout);
+        dbHandler = new DBHandler(this);
+        initComponents();
+    }
 
-        backButton       = findViewById(R.id.back_button);
-        simpanButton     = findViewById(R.id.simpan_button);
-        kosongkanButton  = findViewById(R.id.kosong_button);
-
-        namaLayout   = findViewById(R.id.nama_textInputLayout);
+    private void initComponents() {
+        namaLayout = findViewById(R.id.nama_textInputLayout);
         namaEditText = findViewById(R.id.nama_editText);
-        nimLayout   = findViewById(R.id.NIM_textInputLayout);
+
         nimEditText = findViewById(R.id.NIM_editText);
-        prodiLayout   = findViewById(R.id.prodi_textInputLayout);
+        nimLayout = findViewById(R.id.NIM_textInputLayout);
+
         prodiEditText = findViewById(R.id.prodi_editText);
-        emailLayout   = findViewById(R.id.email_textInputLayout);
+        prodiLayout = findViewById(R.id.prodi_textInputLayout);
+
         emailEditText = findViewById(R.id.email_editText);
+        emailLayout = findViewById(R.id.email_textInputLayout);
 
+        simpanButton = findViewById(R.id.simpan_button);
+        kosongkanButton = findViewById(R.id.kosong_button);
+        backButton = findViewById(R.id.back_button);
 
-        // Mematikan kursor ketika Linear Layout (Tempat Kosong) di tekan
-        registrasiLayout.setOnClickListener(null);
-
-
-        // Tutup Intent dengan Back Button
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,171 +60,46 @@ public class Registrasi extends AppCompatActivity {
             }
         });
 
-
-        // Required Nama
-        namaEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        simpanButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onFocusChange(View view, boolean b) {
-                if (namaEditText.getText().toString().isEmpty()){
-
-                    namaLayout.setErrorEnabled(true);
-                    namaLayout.setError("Nama perlu diisi");
-                }else {
-                    namaLayout.setErrorEnabled(false);
-                }
-            }
-        });
-
-        namaEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (namaEditText.getText().toString().isEmpty()){
-
-                    namaLayout.setErrorEnabled(true);
-                    namaLayout.setError("Nama perlu diisi");
-
-                }else {
-                    namaLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-        // Required NIM
-        nimEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (nimEditText.getText().toString().isEmpty()){
-
-                    nimLayout.setErrorEnabled(true);
-                    nimLayout.setError("NIM perlu diisi");
-                }else {
-                    nimLayout.setErrorEnabled(false);
-                }
-            }
-        });
-
-        nimEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (namaEditText.getText().toString().isEmpty()){
-
-                    nimLayout.setErrorEnabled(true);
-                    nimLayout.setError("NIM perlu diisi");
-
-                }else {
-                    nimLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-        // Required Prodi
-        prodiEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (prodiEditText.getText().toString().isEmpty()){
-
-                    prodiLayout.setErrorEnabled(true);
-                    prodiLayout.setError("Program studi perlu diisi");
-                }else {
-                    prodiLayout.setErrorEnabled(false);
-                }
-            }
-        });
-
-        prodiEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (prodiEditText.getText().toString().isEmpty()){
-
-                    prodiLayout.setErrorEnabled(true);
-                    prodiLayout.setError("Program studi perlu diisi");
-
-                }else {
-                    prodiLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-            }
-        });
-
-
-        // Required E-mail
-        emailEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View view, boolean b) {
-                if (emailEditText.getText().toString().isEmpty()){
-
-                    emailLayout.setErrorEnabled(true);
-                    emailLayout.setError("E-mail perlu diisi");
-                }else {
-                    emailLayout.setErrorEnabled(false);
-                }
-            }
-        });
-
-        emailEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (emailEditText.getText().toString().isEmpty()){
-
-                    emailLayout.setErrorEnabled(true);
-                    emailLayout.setError("E-mail perlu diisi");
-
-                }else {
-                    emailLayout.setErrorEnabled(false);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-
+            public void onClick(View view) {
+                validasiForm();
             }
         });
     }
 
-    // Simpan ke database
-    public void buSave(View view) {
-        ContentValues values = new ContentValues();
-        values.put(DBManager.colNIM, nimEditText.getText().toString());
-        values.put(DBManager.colNama, namaEditText.getText().toString());
-        values.put(DBManager.colProdi, prodiEditText.getText().toString());
-        values.put(DBManager.colEmail, emailEditText.getText().toString());
+    private void validasiForm() {
+        String form_nama = namaEditText.getText().toString();
+        String form_nim = nimEditText.getText().toString();
+        String form_prodi = prodiEditText.getText().toString();
+        String form_email = emailEditText.getText().toString();
 
-        dbManager.Insert(values);
+        if (form_nim.isEmpty()) {
+            nimLayout.setError("Isi NIM dulu");
+            nimLayout.requestFocus();
+        }
+        if (form_nama.isEmpty()) {
+            namaLayout.setError("Isi nama dulu");
+            namaLayout.requestFocus();
+        }
+        if (form_prodi.isEmpty()) {
+            prodiLayout.setError("Isi prodi dulu");
+            prodiLayout.requestFocus();
+        }
+        if (form_email.isEmpty()) {
+            emailLayout.setError("Isi email dulu");
+            emailLayout.requestFocus();
+        } else {
+            dbHandler.tambahMahasiswa(new Mahasiswa(form_nama, form_nim, form_prodi, form_email));
+            List<Mahasiswa> mahasiswaList = dbHandler.getSemuaMahasiswa();
+            recyclerAdapter = new RecyclerAdapter(mahasiswaList);
+            recyclerAdapter.notifyDataSetChanged();
+
+            nimEditText.getText().clear();
+            namaEditText.getText().clear();
+            prodiEditText.getText().clear();
+            emailEditText.getText().clear();
+            Toast.makeText(Registrasi.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
+        }
     }
 }

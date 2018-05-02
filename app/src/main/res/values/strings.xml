@@ -10,4 +10,5 @@
     <string name="nama_mahasiswa">Nama Mahasiswa</string>
     <string name="hapus">Hapus</string>
     <string name="lihat">Lihat</string>
+    <string name="data_masih_kosong">DATA MASIH KOSONG</string>
 </resources>

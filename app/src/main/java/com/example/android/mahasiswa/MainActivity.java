@@ -7,14 +7,14 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
-    DBManager dbManager;
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        dbManager = new DBManager(this);
+        dbHandler = new DBHandler(MainActivity.this);
     }
 
     // Membuat intent untuk Registrasi Activity

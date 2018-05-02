@@ -18,5 +18,4 @@ public class ViewHolder extends RecyclerView.ViewHolder {
         nimText     = itemView.findViewById(R.id.nim_mahasiswa);
         radioButton = itemView.findViewById(R.id.radio_button);
     }
-
 }
