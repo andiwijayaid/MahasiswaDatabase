@@ -12,9 +12,6 @@ import com.example.android.mahasiswa.model.Mahasiswa;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- * Created by Asus on 13/05/2018.
- */
 
 public class DBHelper extends SQLiteOpenHelper  {
 
@@ -48,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper  {
         this.onCreate(sqLiteDatabase);
     }
 
-    /**create record**/
+    // Memasukkan record baru ke dalam database
     public void saveMahasiswa(Mahasiswa mahasiswa) {
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -63,14 +60,14 @@ public class DBHelper extends SQLiteOpenHelper  {
         db.close();
     }
 
-    /**Query records, give options to filter results**/
+    // Filter Option
     public List<Mahasiswa> mahasiswaList(String filter) {
         String query;
         if(filter.equals("")){
-            //regular query
+            // Query umum
             query = "SELECT  * FROM " + TABLE_MAHASISWA;
         }else{
-            //filter results by filter option provided
+            //Query dengan filter
             query = "SELECT  * FROM " + TABLE_MAHASISWA + " ORDER BY "+ filter;
         }
 
@@ -96,7 +93,7 @@ public class DBHelper extends SQLiteOpenHelper  {
     }
 
 
-    /**Query only 1 record**/
+    // Query untuk satu record
     public Mahasiswa getMahasiswa(long id){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT  * FROM " + TABLE_MAHASISWA + " WHERE _id="+ id;
@@ -115,7 +112,7 @@ public class DBHelper extends SQLiteOpenHelper  {
         return receivedMahasiswa;
     }
 
-    /**delete record**/
+    // Menghapus sebuah record
     public void deleteMahasiswaRecord(long id, Context context) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -124,7 +121,7 @@ public class DBHelper extends SQLiteOpenHelper  {
 
     }
 
-    /**update record**/
+    // Update sebuah record
     public void updateMahasiswaRecord(long mahasiswaId, Context context, Mahasiswa updatedMahasiswa) {
         SQLiteDatabase db = this.getWritableDatabase();
         //you can use the constants above instead of typing the column names
@@ -137,4 +134,11 @@ public class DBHelper extends SQLiteOpenHelper  {
         Toast.makeText(context, "Updated successfully.", Toast.LENGTH_SHORT).show();
     }
 
+    public long dataCount(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT  * FROM " + TABLE_MAHASISWA;
+        Cursor cursor = db.rawQuery(query, null);
+
+        return cursor.getCount();
+    }
 }

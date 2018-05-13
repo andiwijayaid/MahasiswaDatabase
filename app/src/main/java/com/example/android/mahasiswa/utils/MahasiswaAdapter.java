@@ -25,11 +25,8 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
     private RecyclerView mRecyclerV;
     DBHelper dbHelper = new DBHelper(mContext);
 
-    // Provide a reference to the views for each data item
-    // Complex data items may need more than one view per item, and
-    // you provide access to all the views for a data item in a view holder
+    // Menyediakan sebuah reference pada view untuk setiap data item
     public class ViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         public TextView namaMahasiswa;
         public TextView nimMahasiswa;
 
@@ -44,17 +41,17 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
     }
 
 
-    // Provide a suitable constructor (depends on the kind of dataset)
+    // Constructor
     public MahasiswaAdapter(List<Mahasiswa> myDataset, Context context, RecyclerView recyclerView) {
         mPeopleList = myDataset;
         mContext = context;
         mRecyclerV = recyclerView;
     }
 
-    // Create new views (invoked by the layout manager)
+    // invoked by the layout manager
     @Override
     public MahasiswaAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        // create a new view
+        // Membuat views baru
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =

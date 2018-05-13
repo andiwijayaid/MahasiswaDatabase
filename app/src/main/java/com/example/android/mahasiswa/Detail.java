@@ -2,6 +2,8 @@ package com.example.android.mahasiswa;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android.mahasiswa.model.Mahasiswa;
@@ -10,6 +12,7 @@ import com.example.android.mahasiswa.utils.DBHelper;
 public class Detail extends AppCompatActivity {
 
     TextView namaMahasiswaText, nimMahasiswaText, prodiMahasiswaText, emailMahasiswaText;
+    Button backButton;
     android.support.v7.widget.Toolbar toolbar;
     DBHelper dbHelper;
     private long receiveMahasiswaId;
@@ -20,6 +23,13 @@ public class Detail extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         initComponents();
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void initComponents() {
@@ -27,6 +37,7 @@ public class Detail extends AppCompatActivity {
         nimMahasiswaText = findViewById(R.id.nim_mahasiswa);
         prodiMahasiswaText = findViewById(R.id.prodi_mahasiswa);
         emailMahasiswaText = findViewById(R.id.email_mahasiswa);
+        backButton = findViewById(R.id.detail_activity_back_button);
 
         toolbar = findViewById(R.id.toolbar_detail);
         setSupportActionBar(toolbar);
