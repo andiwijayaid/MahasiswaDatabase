@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.android.mahasiswa.model.Mahasiswa;
+import com.example.android.mahasiswa.utils.DBHelper;
 
 public class Registrasi extends AppCompatActivity {
 
@@ -25,8 +26,6 @@ public class Registrasi extends AppCompatActivity {
     Button simpanButton, kosongkanButton;
 
 //    private RecyclerAdapter recyclerAdapter;
-//    private DBHandler dbHandler;
-
     private DBHelper dbHelper;
 
     @Override
@@ -100,17 +99,6 @@ public class Registrasi extends AppCompatActivity {
             emailEditText.setError("Isi email dulu");
             emailEditText.requestFocus();
         } else {
-//            dbHandler.tambahMahasiswa(new Mahasiswa(form_nama, form_nim, form_prodi, form_email));
-//            List<Mahasiswa> mahasiswaList = dbHandler.getSemuaMahasiswa();
-//            recyclerAdapter = new RecyclerAdapter(mahasiswaList);
-//            recyclerAdapter.notifyDataSetChanged();
-//
-//            nimEditText.getText().clear();
-//            namaEditText.getText().clear();
-//            prodiEditText.getText().clear();
-//            emailEditText.getText().clear();
-//            Toast.makeText(Registrasi.this, "Berhasil Menambahkan Data", Toast.LENGTH_SHORT).show();
-
             Mahasiswa mahasiswa = new Mahasiswa(form_nama, form_nim, form_prodi, form_email);
             dbHelper.saveMahasiswa(mahasiswa);
             nimEditText.getText().clear();

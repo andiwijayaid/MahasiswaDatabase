@@ -1,4 +1,4 @@
-package com.example.android.mahasiswa;
+package com.example.android.mahasiswa.utils;
 
 import android.content.ContentValues;
 import android.content.Context;

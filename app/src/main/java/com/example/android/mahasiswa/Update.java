@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.android.mahasiswa.model.Mahasiswa;
+import com.example.android.mahasiswa.utils.DBHelper;
 
 public class Update extends AppCompatActivity {
 
@@ -22,11 +23,6 @@ public class Update extends AppCompatActivity {
     AppCompatEditText emailEditText;
     Button updateButton;
     FloatingActionButton backButton;
-//    final String NAME = "Lecturer NAME";
-//    final String NIM = "Lecturere NIM";
-//    final String PRODI = "Lecturer PRODI";
-//    final String EMAIL = "Lecturer EMAIL";
-//    final Bundle bundle = getIntent().getExtras();
 
     private DBHelper dbHelper;
     private long receiveMahasiswaId;

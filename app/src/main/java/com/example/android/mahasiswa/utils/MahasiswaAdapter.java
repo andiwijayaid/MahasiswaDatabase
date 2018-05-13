@@ -10,23 +10,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.android.mahasiswa.DBHelper;
+import com.example.android.mahasiswa.Detail;
 import com.example.android.mahasiswa.R;
 import com.example.android.mahasiswa.Update;
 import com.example.android.mahasiswa.model.Mahasiswa;
 
 import java.util.List;
 
-/**
- * Created by Asus on 13/05/2018.
- */
 
 public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.ViewHolder> {
 
     private List<Mahasiswa> mPeopleList;
     private Context mContext;
     private RecyclerView mRecyclerV;
-
+    DBHelper dbHelper = new DBHelper(mContext);
 
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
@@ -41,8 +38,8 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
         public ViewHolder(View v) {
             super(v);
             layout = v;
-            namaMahasiswa = (TextView) v.findViewById(R.id.nama_mahasiswa);
-            nimMahasiswa = (TextView) v.findViewById(R.id.nim_mahasiswa);
+            namaMahasiswa = v.findViewById(R.id.nama_mahasiswa);
+            nimMahasiswa = v.findViewById(R.id.nim_mahasiswa);
         }
     }
 
@@ -78,44 +75,6 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
         holder.nimMahasiswa.setText(mahasiswa.getNimMahasiswa());
 
         //listen to single view layout click
-        holder.layout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setTitle("Choose option");
-                builder.setMessage("Update or delete user?");
-                builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        //go to update activity
-                        goToUpdateActivity(mahasiswa.getId());
-
-                    }
-                });
-                builder.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        DBHelper dbHelper = new DBHelper(mContext);
-                        dbHelper.deleteMahasiswaRecord(mahasiswa.getId(), mContext);
-
-                        mPeopleList.remove(position);
-                        mRecyclerV.removeViewAt(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, mPeopleList.size());
-                        notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-                builder.create().show();
-            }
-        });
-
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
@@ -154,12 +113,26 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
                 return false;
             }
         });
+
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToDetailActivity(mahasiswa.getId());
+            }
+        });
+
     }
 
-    private void goToUpdateActivity(long personId){
+    private void goToUpdateActivity(long mahasiswaId){
         Intent goToUpdate = new Intent(mContext, Update.class);
-        goToUpdate.putExtra("USER_ID", personId);
+        goToUpdate.putExtra("USER_ID", mahasiswaId);
         mContext.startActivity(goToUpdate);
+    }
+
+    private void goToDetailActivity(long mahasiswaId){
+        Intent goToDetail = new Intent(mContext, Detail.class);
+        goToDetail.putExtra("USER_ID", mahasiswaId);
+        mContext.startActivity(goToDetail);
     }
 
     // Return the size of your dataset (invoked by the layout manager)
