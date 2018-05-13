@@ -18,9 +18,12 @@
 
     <style name="error_appearance" parent="@android:style/TextAppearance">
         <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/colorAccent</item>
+        <item name="android:textSize">12sp</item>
     </style>
 
     <style name="AppTheme.Radio">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>
+
 </resources>

@@ -21,46 +21,27 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:id="@+id/recyclerView_id">
-
-    </android.support.v7.widget.RecyclerView>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_behavior="@string/bottom_sheet_behavior">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:id="@+id/lihat_activity_hapus_button"
-            android:text="@string/hapus"
-            android:textColor="@color/colorAccent"
-            android:background="@drawable/lihat_activity_hapus_button" />
+            android:layout_marginTop="?attr/actionBarSize"
+            android:id="@+id/recyclerView_id">
 
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:id="@+id/lihat_activity_lihat_button"
-            android:text="@string/lihat"
-            android:textColor="@color/colorPrimary"
-            android:background="@drawable/lihat_activity_lihat_button"
-            android:layout_weight="1"/>
+        </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/masih_kosong"
-        android:text="@string/data_masih_kosong"
-        android:layout_gravity="center"/>
-
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/masih_kosong"-->
+        <!--android:text="@string/data_masih_kosong"-->
+        <!--android:layout_gravity="center"/>-->
 
 </android.support.design.widget.CoordinatorLayout>

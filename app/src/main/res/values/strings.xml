@@ -11,4 +11,10 @@
     <string name="hapus">Hapus</string>
     <string name="lihat">Lihat</string>
     <string name="data_masih_kosong">DATA MASIH KOSONG</string>
+    <string name="nim_mahasiswa">NIM Mahasiswa</string>
+    <string name="progrram_studi">Progrram Studi</string>
+    <string name="prodi">Prodi</string>
+    <string name="email_mahasiswa">Email Mahasiswa</string>
+    <string name="hapus_semua_data">Hapus Semua Data</string>
+    <string name="update">Update</string>
 </resources>

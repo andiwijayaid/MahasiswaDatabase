@@ -2,52 +2,55 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/tools"
-    android:id="@+id/recyclerView_item_id"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="65dp"
     android:orientation="horizontal"
     app:ignore="NamespaceTypo">
 
     <android.support.v7.widget.CardView
         card_view:cardCornerRadius="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="2dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="4dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="6"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/nama_mahasiswa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginTop="6dp"
-                android:text="@string/nama_mahasiswa"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:id="@+id/recyclerView_item_id"
+                android:layout_weight="12"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/nim_mahasiswa"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="6dp"
-                android:layout_marginBottom="3dp"
-                android:text="@string/nim"
-                android:textSize="14sp" />
+                <TextView
+                    android:id="@+id/nama_mahasiswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginTop="6dp"
+                    android:text="@string/nama_mahasiswa"
+                    android:textSize="18sp"
+                    android:textColor="#000"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/nim_mahasiswa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="6dp"
+                    android:layout_marginBottom="3dp"
+                    android:text="@string/nim"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
-        <android.support.v7.widget.AppCompatRadioButton
-            android:id="@+id/radio_button"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:theme="@style/AppTheme.Radio"
-            android:gravity="center" />
 
     </android.support.v7.widget.CardView>
 
