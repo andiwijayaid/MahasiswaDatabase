@@ -40,6 +40,7 @@ public class Detail extends AppCompatActivity {
         backButton = findViewById(R.id.detail_activity_back_button);
 
         toolbar = findViewById(R.id.toolbar_detail);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
         dbHelper = new DBHelper(this);

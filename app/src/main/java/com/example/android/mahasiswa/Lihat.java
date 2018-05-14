@@ -27,9 +27,9 @@ public class Lihat extends AppCompatActivity {
     private RecyclerView.LayoutManager mLayoutManager;
     private DBHelper dbHelper;
     private MahasiswaAdapter adapter;
-    private String filter = "";
     Toolbar toolbar;
     Button backButton;
+    String filter = "";
     AlertDialog alertDialog;
     AlertDialog.Builder builder;
 
@@ -61,6 +61,7 @@ public class Lihat extends AppCompatActivity {
 
         //populate recyclerview
         populaterecyclerView(filter);
+
     }
 
     private void populaterecyclerView(String filter){
@@ -101,7 +102,6 @@ public class Lihat extends AppCompatActivity {
                 populaterecyclerView(filter);
             }
         });
-
 
         spinner.setAdapter(adapter);
 
