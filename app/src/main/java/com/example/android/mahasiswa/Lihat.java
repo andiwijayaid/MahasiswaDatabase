@@ -77,7 +77,7 @@ public class Lihat extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        getMenuInflater().inflate(R.menu.menu_lihat_activity, menu);
+        // getMenuInflater().inflate(R.menu.menu_lihat_activity, menu);
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_lihat_activity, menu);
