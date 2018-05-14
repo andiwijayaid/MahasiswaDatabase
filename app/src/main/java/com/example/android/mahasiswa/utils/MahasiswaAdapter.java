@@ -25,6 +25,9 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
     private RecyclerView mRecyclerV;
     DBHelper dbHelper = new DBHelper(mContext);
 
+    AlertDialog alertDialog;
+    android.support.v7.app.AlertDialog alertBuilder;
+
     // Menyediakan sebuah reference pada view untuk setiap data item
     public class ViewHolder extends RecyclerView.ViewHolder {
         public TextView namaMahasiswa;
@@ -75,9 +78,9 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
         holder.layout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setTitle("Choose option");
-                builder.setMessage("Update or delete user?");
+                final AlertDialog.Builder builder = new AlertDialog.Builder(mContext, R.style.AlertDialogCustom);
+                builder.setTitle("Pilih opsi");
+                builder.setMessage("Update atau delete mahasiswa?");
                 builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -87,23 +90,39 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.View
 
                     }
                 });
-                builder.setNeutralButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        DBHelper dbHelper = new DBHelper(mContext);
-                        dbHelper.deleteMahasiswaRecord(mahasiswa.getId(), mContext);
-
-                        mPeopleList.remove(position);
-                        mRecyclerV.removeViewAt(position);
-                        notifyItemRemoved(position);
-                        notifyItemRangeChanged(position, mPeopleList.size());
-                        notifyDataSetChanged();
-                    }
-                });
-                builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(final DialogInterface dialog, int which) {
+                        AlertDialog.Builder alertBuilder = new AlertDialog.Builder(mContext, R.style.AlertDialogCustom);
+                        alertBuilder.setMessage("Hapus Data");
+                        alertBuilder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                DBHelper dbHelper = new DBHelper(mContext);
+                                dbHelper.deleteMahasiswaRecord(mahasiswa.getId(), mContext);
+
+                                mPeopleList.remove(position);
+                                mRecyclerV.removeViewAt(position);
+                                notifyItemRemoved(position);
+                                notifyItemRangeChanged(position, mPeopleList.size());
+                                notifyDataSetChanged();
+                            }
+                        });
+
+                        alertBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                        alertBuilder.create().show();
                     }
                 });
                 builder.create().show();

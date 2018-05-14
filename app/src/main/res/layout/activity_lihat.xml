@@ -5,6 +5,7 @@
     android:background="@color/colorPrimary"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/HiddenTitleName"
     tools:context="com.example.android.mahasiswa.Lihat">
 
     <android.support.v7.widget.Toolbar
@@ -36,12 +37,5 @@
         </android.support.v7.widget.RecyclerView>
 
     </LinearLayout>
-
-    <!--<TextView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/masih_kosong"-->
-        <!--android:text="@string/data_masih_kosong"-->
-        <!--android:layout_gravity="center"/>-->
 
 </android.support.design.widget.CoordinatorLayout>

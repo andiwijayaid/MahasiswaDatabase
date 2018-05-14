@@ -1,8 +1,5 @@
 package com.example.android.mahasiswa.model;
 
-/**
- * Created by Asus on 30/04/2018.
- */
 
 public class Mahasiswa {
 

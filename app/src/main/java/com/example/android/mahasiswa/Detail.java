@@ -58,6 +58,6 @@ public class Detail extends AppCompatActivity {
         nimMahasiswaText.setText(queriedMahasiswa.getNimMahasiswa());
         prodiMahasiswaText.setText(queriedMahasiswa.getProdiMahasiswa());
         emailMahasiswaText.setText(queriedMahasiswa.getEmailMahasiswa());
-
     }
+
 }

@@ -5,4 +5,8 @@
         android:title="Edit"
         android:id="@+id/edit_data"/>
 
+    <item
+        android:title="Hapus"
+        android:id="@+id/hapus_data"/>
+
 </menu>

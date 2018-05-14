@@ -62,15 +62,21 @@ public class DBHelper extends SQLiteOpenHelper  {
 
     // Filter Option
     public List<Mahasiswa> mahasiswaList(String filter) {
-        String query;
+        String query = null;
         if(filter.equals("")){
             // Query umum
             query = "SELECT  * FROM " + TABLE_MAHASISWA;
-        }else{
-            //Query dengan filter
-            query = "SELECT  * FROM " + TABLE_MAHASISWA + " ORDER BY "+ filter;
+        }else if (filter.equals("Nama")){
+            //Order berdasarkan Nama
+            query = "SELECT  * FROM " + TABLE_MAHASISWA + " ORDER BY "+ COLUMN_NAMA;
+        }else if (filter.equals("NIM")) {
+            //Order berdasarkan NIM
+            query = "SELECT  * FROM " + TABLE_MAHASISWA + " ORDER BY " + COLUMN_NIM;
+        }else if (filter.equals("Program Studi")){
+            //Order berdasarkan PRODI
+            query = "SELECT  * FROM " + TABLE_MAHASISWA + " ORDER BY " + COLUMN_PRODI;
         }
-
+        
         List<Mahasiswa> mahasiswaLinkedList = new LinkedList<>();
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(query, null);
@@ -134,11 +140,8 @@ public class DBHelper extends SQLiteOpenHelper  {
         Toast.makeText(context, "Updated successfully.", Toast.LENGTH_SHORT).show();
     }
 
-    public long dataCount(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT  * FROM " + TABLE_MAHASISWA;
-        Cursor cursor = db.rawQuery(query, null);
-
-        return cursor.getCount();
+    public void deleteAllMahasiswaRecord(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM " + TABLE_MAHASISWA);
     }
 }
